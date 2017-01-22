@@ -3,7 +3,7 @@
  *
  * Author:      Pat Hawks
  * Created on:  5 Aug 2016
- * Source File: romcheck.c
+ * Source File: dropngs.c
  */
 
 #include <stdio.h>
