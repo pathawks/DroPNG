@@ -42,13 +42,10 @@ const char *COMPRESSION_METHOD[] = {
 
 void help(){}
 
-int fgetint(FILE* image) {
-    unsigned int a,b,c,d;
-    a = fgetc(image);
-    b = fgetc(image);
-    c = fgetc(image);
-    d = fgetc(image);
-    return a << 24 | b << 16 | c << 8 | d;
+static inline uint32_t fgetint(FILE* image) {
+    uint32_t a;
+    fread(&a, 4, 1, image);
+    return ntohl(a);
 }
 
 static inline unsigned int dataToInt(unsigned char *d) {
