@@ -68,19 +68,11 @@ int validChunkCrc(PngChunk* chunk) {
 }
 
 void readChunkInfo(FILE* image, PngChunk* chunk) {
-    unsigned char *data;
-    int i;
     chunk->length = fgetint(image);
+    chunk->data = malloc(chunk->length);
 
-    chunk->type[0] = fgetc(image);
-    chunk->type[1] = fgetc(image);
-    chunk->type[2] = fgetc(image);
-    chunk->type[3] = fgetc(image);
-
-    data = chunk->data = malloc(chunk->length);
-    for (i=chunk->length, data=chunk->data; i; --i) {
-        *data++ = fgetc(image);
-    }
+    fread(chunk->type, 1, 4, image);
+    fread(chunk->data, 1, chunk->length, image);
 
     chunk->crc = fgetint(image);
     chunk->badcrc = !validChunkCrc(chunk);
@@ -171,8 +163,6 @@ void releaseChunk(PngChunk* chunk) {
 }
 
 int main(int argc, char **argv) {
-    unsigned char hash[100];
-    char displayHash[100];
     FILE *file;
     PngChunk chunk;
     int invalidPng = 0;
