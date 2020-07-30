@@ -82,7 +82,7 @@ void displayChunkInfo(PngChunk* chunk) {
     size_t i;
     printf("%4s size:%8d\tcrc: %08X %s\n", chunk->type, chunk->length, chunk->crc, chunk->badcrc?"BAD CRC!":"");
 
-    switch (*(int *)chunk->type) {
+    switch (htonl(*(int *)chunk->type)) {
     case PNG_CHUNKTYPE_IHDR:
         printf("     Width:\t\t%u\n     Height:\t\t%u\n     Bit depth:\t\t%u\n     Color type:\t%s\n     Interlace:\t\t%s\n",
                 dataToInt(chunk->data),

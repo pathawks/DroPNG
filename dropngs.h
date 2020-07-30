@@ -29,19 +29,19 @@ void displayChunkInfo(PngChunk*);
 void readChunkInfo(FILE*, PngChunk*);
 int main(int argc, char **argv);
 
-#define PNG_CHUNKTYPE_tEXt 0x74584574
-#define PNG_CHUNKTYPE_PLTE 0x45544c50
-#define PNG_CHUNKTYPE_tRNS 0x534e5274
-#define PNG_CHUNKTYPE_bKGD 0x44474b62
-#define PNG_CHUNKTYPE_tIME 0x454d4974
-#define PNG_CHUNKTYPE_gAMA 0x414d4167
-#define PNG_CHUNKTYPE_cHRM 0x4d524863
-#define PNG_CHUNKTYPE_IHDR 0x52444849
-#define PNG_CHUNKTYPE_iTXt 0x74585469
-#define PNG_CHUNKTYPE_pHYs 0x73594870
-#define PNG_CHUNKTYPE_iCCP 0x50434369
-#define PNG_CHUNKTYPE_sRGB 0x42475273
-#define PNG_CHUNKTYPE_IDAT 0x54414449
+#define PNG_CHUNKTYPE_tEXt (int) 'tEXt'
+#define PNG_CHUNKTYPE_PLTE (int) 'PLTE'
+#define PNG_CHUNKTYPE_tRNS (int) 'tRNS'
+#define PNG_CHUNKTYPE_bKGD (int) 'bKGD'
+#define PNG_CHUNKTYPE_tIME (int) 'tIME'
+#define PNG_CHUNKTYPE_gAMA (int) 'gAMA'
+#define PNG_CHUNKTYPE_cHRM (int) 'cHRM'
+#define PNG_CHUNKTYPE_IHDR (int) 'IHDR'
+#define PNG_CHUNKTYPE_iTXt (int) 'iTXt'
+#define PNG_CHUNKTYPE_pHYs (int) 'pHYs'
+#define PNG_CHUNKTYPE_iCCP (int) 'iCCP'
+#define PNG_CHUNKTYPE_sRGB (int) 'sRGB'
+#define PNG_CHUNKTYPE_IDAT (int) 'IDAT'
 
 uint32_t update_crc(unsigned long crc, void *buf, int len);
 
