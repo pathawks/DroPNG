@@ -151,6 +151,16 @@ void displayChunkInfo(PngChunk* chunk) {
         );
     */
         break;
+    case PNG_CHUNKTYPE_PLTE:
+        if (chunk->length % 3) {
+            printf("Chunk length must be divisible by 3!");
+            break;
+        }
+        for(i=0; i<chunk->length; i+=3) {
+            int color = dataToInt(chunk->data + i) & 0x00ffffff;
+            printf("     #%06x\n", color);
+        }
+        break;
     }
     return;
 }
